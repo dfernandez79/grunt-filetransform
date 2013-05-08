@@ -37,29 +37,37 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
-Type: `String`
-Default value: `',  '`
+#### options.map
+Type: `Function`
+Default value: _identity transform_
+Arguments passed to the fuction: `(contents, filepath, options)`
+Returns: _the data of the transformed source_
 
-A string value that is used to do something with whatever.
+This function will be invoked for each source file to transform:
+* **contents**: the source file contents.
+* **filepath**: the source file path.
+* **options**: additional options that applies for the src/dest configuration.
 
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
+#### options.reduce
+Type: `Function`
+Default value: _concatenate all file contents_
+Argumenst passed to the function: `(results, options)`
+Returns: _the data used to write the destination file_
 
-A string value that is used to do something else with whatever else.
+This function is invoked with the results of each `options.map` call:
+* **results**: is an array of objects with the following data: `{filepath: 'source path', contents: 'map result' }`.
+* **options**: additional options that applies for the src/dest configuration.
 
 ### Usage Examples
 
 #### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+In this example, the default options are used. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing1 2 3.`
 
 ```js
 grunt.initConfig({
   filetransform: {
-    options: {},
     files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+      'dest/defaultOptions': ['src/testing', 'src/123'],
     },
   },
 })
