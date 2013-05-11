@@ -75,7 +75,9 @@ can be re-written as:
 grunt.initConfig({
   filetransform: {
     options: {
-        map: function (contents, filepath, options) { return options.quote + contents + options.quote; },
+        map: function (contents, filepath, options) { 
+          return options.quote + contents + options.quote; 
+        },
         reduce: function (results, options) { 
           return results.map(function (f) { return f.contents; }).join(options.separator); 
         },
