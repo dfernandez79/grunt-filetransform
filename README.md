@@ -8,13 +8,18 @@ Applies custom functions to transform (map) and concatenate files (reduce).
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
 
-If you haven't used [Grunt] before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
+If you haven't used [Grunt] before, be sure to check out the
+[Getting Started](http://gruntjs.com/getting-started) guide, as it explains
+how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as
+install and use Grunt plugins. Once you're familiar with that process, you
+may install this plugin with this command:
 
 ```shell
 npm install grunt-filetransform --save-dev
 ```
 
-Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+Once the plugin has been installed, it may be enabled inside your Gruntfile
+with this line of JavaScript:
 
 ```js
 grunt.loadNpmTasks('grunt-filetransform');
@@ -29,12 +34,23 @@ File transform does two things:
 1. It applies a `map` function to each file.
 2. It takes the result of `map` functions and merges them with the `reduce` function.
 
-It's a generic task that you can use to write file transformations without creating a [Grunt] plugin.
+It's a generic task that you can use to write file transformations without
+creating a [Grunt] plugin.
 
+#### What's the difference with `grunt-contrib-concat`?
+
+When this task was created `grunt-contrib-concat` didn't supported the
+`process` to process files before concatenation. The `process` option allows
+you to cover most of the functionality of this task, except for the custom
+merging of processed results (the _reduce_ part).
+
+If you need to customise file merging beyond a banner or file separators, then
+this task is for you.
 
 ### Usage
 
-In your project's Gruntfile, add a section named `filetransform` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `filetransform` to the
+data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
@@ -103,7 +119,7 @@ The additional options used by your functions can be passed also for each file g
 
 * Type: `Function`
 * Default value: _identity transform_
-* Arguments passed to the fuction: `(contents, filepath, options)`
+* Arguments passed to the function: `(contents, filepath, options)`
 * Returns: _the data of the transformed source_
 
 This function will be invoked for each source file to transform:
@@ -115,7 +131,7 @@ This function will be invoked for each source file to transform:
 
 * Type: `Function`
 * Default value: _concatenate all file contents_
-* Argumenst passed to the function: `(results, options)`
+* Arguments passed to the function: `(results, options)`
 * Returns: _the data used to write the destination file_
 
 This function is invoked with the results of each `options.map` call:
@@ -123,11 +139,13 @@ This function is invoked with the results of each `options.map` call:
 * **options**: additional options that applies for the src/dest configuration.
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
+In lieu of a formal style guide, take care to maintain the existing coding
+style. Add unit tests for any new or changed functionality.
+Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-* v0.1.2 - Update of dependency versions.
-* v0.1.0 - First release.
+* 2014-04-05 v0.1.2 - Update of dependency versions.
+* 2013-05-11 v0.1.0 - First release.
 
 [Grunt]: http://gruntjs.com/
 [Gruntfile.js]: https://github.com/dfernandez79/grunt-filetransform/blob/master/Gruntfile.js
