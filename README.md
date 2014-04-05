@@ -1,6 +1,9 @@
 # grunt-filetransform
+[![Build Status](https://travis-ci.org/dfernandez79/grunt-filetransform.png)](https://travis-ci.org/dfernandez79/grunt-filetransform)
+[![NPM version](https://badge.fury.io/js/grunt-filetransform.png)](http://badge.fury.io/js/grunt-filetransform)
+[![devDependency Status](https://david-dm.org/dfernandez79/grunt-filetransform/dev-status.png)](https://david-dm.org/dfernandez79/grunt-filetransform)
 
-> Applies custom functions to transform (map) and concatenate files (reduce).
+Applies custom functions to transform (map) and concatenate files (reduce).
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -21,7 +24,7 @@ grunt.loadNpmTasks('grunt-filetransform');
 
 ### Overview
 
-File transform does two things: 
+File transform does two things:
 
 1. It applies a `map` function to each file.
 2. It takes the result of `map` functions and merges them with the `reduce` function.
@@ -54,8 +57,8 @@ grunt.initConfig({
   filetransform: {
     options: {
         map: function (contents) { return '"' + contents + '"'; },
-        reduce: function (results) { 
-          return results.map(function (f) { return f.contents; }).join(', '); 
+        reduce: function (results) {
+          return results.map(function (f) { return f.contents; }).join(', ');
         }
     },
     files: {
@@ -65,21 +68,21 @@ grunt.initConfig({
 })
 ```
 
-This example will quote the contents of `file1` and `file2` and them it will join them with a comma. 
+This example will quote the contents of `file1` and `file2` and them it will join them with a comma.
 Function arguments are specified bellow.
 
-Any other options besides `map` and `reduce` are passed to your function. For instance the previous example 
+Any other options besides `map` and `reduce` are passed to your function. For instance the previous example
 can be re-written as:
 
 ```js
 grunt.initConfig({
   filetransform: {
     options: {
-        map: function (contents, filepath, options) { 
-          return options.quote + contents + options.quote; 
+        map: function (contents, filepath, options) {
+          return options.quote + contents + options.quote;
         },
-        reduce: function (results, options) { 
-          return results.map(function (f) { return f.contents; }).join(options.separator); 
+        reduce: function (results, options) {
+          return results.map(function (f) { return f.contents; }).join(options.separator);
         },
         quote: '"',
         separator: ','
@@ -91,7 +94,7 @@ grunt.initConfig({
 })
 ```
 
-The additional options used by your functions can be passed also for each file group, see this project 
+The additional options used by your functions can be passed also for each file group, see this project
 [Gruntfile.js] for more examples.
 
 ### Options
@@ -123,7 +126,8 @@ This function is invoked with the results of each `options.map` call:
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-* 0.1.0 - First release
+* v0.1.2 - Update of dependency versions.
+* v0.1.0 - First release.
 
 [Grunt]: http://gruntjs.com/
 [Gruntfile.js]: https://github.com/dfernandez79/grunt-filetransform/blob/master/Gruntfile.js

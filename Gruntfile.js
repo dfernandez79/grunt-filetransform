@@ -2,7 +2,7 @@
  * grunt-filetransform
  * https://github.com/dfernandez79/grunt-filetransform
  *
- * Copyright (c) 2013 Diego Fernandez
+ * Copyright (c) 2014 Diego Fernandez
  * Licensed under the MIT license.
  */
 
